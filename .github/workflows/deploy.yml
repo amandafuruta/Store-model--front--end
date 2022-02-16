@@ -1,0 +1,45 @@
+name: Deploy on dev server
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Add enviroment file
+        run: echo -e "APP_NAME=${{ secrets.APP_NAME }}\nAPP_PORT=${{ secrets.APP_PORT }}" > .env
+
+      - name: Build application
+        run: yarn build
+
+      - name: Zip application
+        run: tar -zcvf ../${{ secrets.APP_NAME }}.tar.gz .
+
+      - name: Add ssh private key
+        run: |
+          mkdir -p $HOME/.ssh/
+          chmod 700 $HOME/.ssh/
+          echo -n "${{ secrets.SERVER_SSH_KEY_BASE64 }}" | base64 --decode > $HOME/.ssh/id_rsa
+          chmod 600 $HOME/.ssh/id_rsa
+          stat $HOME/.ssh/id_rsa
+          ssh-keyscan -H ${{secrets.SERVER_HOST}} > ~/.ssh/known_hosts
+
+      - name: Send zip to server
+        run: scp ../${{ secrets.APP_NAME }}.tar.gz ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:${{ secrets.SERVER_DEPLOY_FOLDER }}
+
+      - name: Connect server and unzip
+        run: ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "tar -C ${{ secrets.SERVER_DEPLOY_FOLDER }} -xzf ${{ secrets.SERVER_DEPLOY_FOLDER }}/${{ secrets.APP_NAME }}.tar.gz && rm -f ${{ secrets.SERVER_DEPLOY_FOLDER }}/${{ secrets.APP_NAME }}.tar.gz"
+
+      - name: Start/Restart application
+        run: ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "cd ${{ secrets.SERVER_DEPLOY_FOLDER }} && pm2 startOrReload ecosystem.config.js"
