@@ -6,21 +6,21 @@ import Card from "components/card"
 import styled from 'styled-components'
 
 const produtos = [
-    {id: "1", mainPhoto: "/images/product1.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
-    {id: "2", mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
-    {id: "3", mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
-    {id: "4", mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
-    {id: "5", mainPhoto: "/images/product3.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
-    {id: "6", mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
-    {id: "7", mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
-    {id: "8", mainPhoto: "/images/product4.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
+    {id: 1, mainPhoto: "/images/product1.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
+    {id: 2, mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
+    {id: 3, mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
+    {id: 4, mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
+    {id: 5, mainPhoto: "/images/product3.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
+    {id: 6, mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
+    {id: 7, mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
+    {id: 8, mainPhoto: "/images/product4.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
 ]
 
 const presentes = [
-    {id: "1", mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
-    {id: "2", mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
-    {id: "3", mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
-    {id: "4", mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
+    {id: 1, mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
+    {id: 2, mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
+    {id: 3, mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
+    {id: 4, mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
 ]
 
 
@@ -48,7 +48,7 @@ export default function AreaLogada(){
                     </div>
 
                     <div className="banner_anuncio ad_triple">
-                        <div className="ad_box"><img src="/images/ad1.png"/></div>
+                        <div className="ad_box first_ad"><img src="/images/ad1.png"/></div>
                         <div className="ad_box"><img src="/images/ad2.png"/></div>
                         <div className="ad_box last_ad"><img src="/images/ad1.png"/></div>
                     </div>
@@ -99,7 +99,6 @@ const Promocionais = styled.section`
 
         h3{
             margin: 0; 
-            padding-top: 8px;
         }
 
         .products{
@@ -136,7 +135,8 @@ const Promocionais = styled.section`
                 
                 img{
                     object-fit: cover;
-          
+                    width: 100%;
+                    height: 100%;
                 }
 
                 &:not(:last-child){
@@ -159,5 +159,39 @@ const Promocionais = styled.section`
             }
         }
     }
+
+    @media(max-width: 990px){
+        .container{
+            max-width: 850px;
+            .products{
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    }
+
+    @media(max-width:770px){
+        .container{
+            .products{
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .banner_anuncio{
+                flex-direction: column;
+                
+                .first_ad{
+                    margin-bottom: 24px;
+                }
+                
+            }
+        }
+    }
+/* 
+    @media(max-width:510px){
+        .container{
+            .products{
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    } */
 
 `

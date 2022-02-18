@@ -20,7 +20,7 @@ export default function Banner1(props: Props){
                     props.image == 'none'?
                     <></>
                     :
-                    <img src={props.image}/>
+                    <img src={props.image} id="img"/>
                 }
             </div>
         </Style>
@@ -38,6 +38,7 @@ const Style = styled.div`
     height: 100%;
     display: flex;
     align-items: center;
+    padding: 20px;
 
     .container{
         max-width: 907px;
@@ -56,6 +57,7 @@ const Style = styled.div`
             h3{
                 line-height: 41px;
                 margin-bottom: 13px ;
+                text-align: start;
             }
 
             p{
@@ -69,4 +71,14 @@ const Style = styled.div`
             height:190px;
         }
     }
+
+    @media(max-width:770px){
+        .container{
+            #img{
+                display: none;
+            }
+        }
+    }
+
+ 
 `

@@ -36,5 +36,18 @@ const Style = styled.section`
         margin-left: 155px;
     }
 
+    @media(max-width:960px){
+        .rectangle{
+            max-width: 800px;
+            right: calc(50% - 401px);
+        }
 
+        span{
+            font-size: 40px;
+        }
+    }
+
+    @media(max-width:890px){
+        display: none;
+    }
 `

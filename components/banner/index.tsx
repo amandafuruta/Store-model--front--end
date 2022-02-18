@@ -117,6 +117,10 @@ const Style = styled.section`
     &:after{
       font-size: 10px;
     }
+
+    &:hover{
+      background: var(--hover-color);
+    }
   }
 
   .swiper-button-prev{
@@ -130,6 +134,10 @@ const Style = styled.section`
     &:after{
       font-size: 14px;
     }
+
+    &:hover{
+      background: var(--hover-color);
+    }
   }
 
   .swiper-pagination-bullet{
@@ -139,5 +147,12 @@ const Style = styled.section`
 
   .swiper-pagination-bullet-active{
     background: var(--primary-color);
+  }
+  
+  @media(max-width:890px){
+    padding: 41px 0 48px;
+    .swiper-button-prev, .swiper-button-next{
+      display: none;
+    }
   }
 `

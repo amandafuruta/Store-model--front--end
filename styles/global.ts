@@ -71,4 +71,21 @@ input{
     margin-bottom: 16px;
 }
 
+.text_title{
+    margin-bottom: 45px;
+    padding-top: 8px;
+    position: relative;
+
+    &:before{
+        content: "";
+        width: 50px;
+        height: 2px;
+        background-color: var(--primary-color);
+        position: absolute;
+        top: 0;
+    }
+}
+
+
+
 `

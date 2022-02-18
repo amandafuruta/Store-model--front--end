@@ -1,28 +1,30 @@
 import styled from "styled-components";
-
+import Link from 'next/Link'
 interface Props{
     photo: string;
     description: string;
     price: string;
-    id:string;
+    id:number;
 }
 
 export default function Card(props:Props){
     return(
-        <Style>
-            <div className="img_box">
-                <img src={props.photo}/>
-            </div>
+        <Link href={`/logado/${props.id}`}>
+            <Style>
+                <div className="img_box">
+                    <img src={props.photo}/>
+                </div>
 
-            <span className="p16-bold descrip">{props.description}</span>
+                <span className="p16-bold descrip">{props.description}</span>
 
-            <div className="price">
-                <span className="p14-bold real">R$</span>
-                <span className="titulo26-bold price">{props.price}</span>
-            </div>
+                <div className="price">
+                    <span className="p14-bold real">R$</span>
+                    <span className="titulo26-bold price">{props.price}</span>
+                </div>
 
-            <button className="p14-bold"><img src="/images/cart.png" alt="" /> Adicionar</button>
-        </Style>
+                <button className="p14-bold"><img src="/images/cart.png" alt="" /> Adicionar</button>
+            </Style>
+        </Link>
     )
 }
 
@@ -33,6 +35,8 @@ const Style = styled.div`
     align-items: center;
     width: 240px;
     margin-bottom: 66px;
+    place-self: center;
+    cursor: pointer;
 
     .img_box{
         width: 150px;
@@ -80,5 +84,9 @@ const Style = styled.div`
         &:hover{
             background-color: var(--hover-color);
         }
+    }
+
+    @media (max-width: 500px){
+        width: 140px;
     }
 `

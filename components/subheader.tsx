@@ -55,4 +55,16 @@ const Style= styled.div`
             }
         }
     }
+
+    @media(max-width: 990px){
+        .container{
+            ul{
+                display: none;
+            }
+
+            img{
+                margin-left: 17px;
+            }
+        }
+    }
 `

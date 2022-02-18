@@ -23,13 +23,13 @@ export default function HeaderComponent() {
                 </div>
 
                 <Link href="/">
-                    <img src="/images/logomain.png" alt="" />
+                    <img className="mainLogo" src="/images/logomain.png" alt="" />
                 </Link>
 
                 <Link href="/">
                     <a href="">
                         <img src="/images/cartIcon.png" alt="" />
-                        <span className="p14-bold">Carrinho</span>
+                        <span className="p14-bold cart_text">Carrinho</span>
                         <div>
                             <span className="p12-bold">3</span>
                         </div>
@@ -74,6 +74,7 @@ const Header = styled.header`
         }
         .logo{
             margin-right: 16px;
+
         }
 
         .itapeva{
@@ -116,6 +117,14 @@ const Header = styled.header`
                 right: -10px;
                 top: -10px;
             }
+
+            &:hover{
+                background-color: var(--hover-color);
+            }
+        }
+
+        .mainLogo{
+            cursor: pointer;
         }
     }
 
@@ -143,6 +152,7 @@ const Header = styled.header`
             left: 0;
             top: 106px;
             flex-direction: column;
+            z-index: 2;
 
             .header_mobile{
                 padding: 21px 42px;
@@ -150,10 +160,25 @@ const Header = styled.header`
                 width: 100%;
                 display: flex;
                 justify-content: space-between;
-                z-index: 2;
                 button{
                     border: none;
                     background-color: #24242D;
+                }
+            }
+        }
+    }
+
+    @media(max-width:450px){
+        .container{
+            .cart_text{
+                display:none;
+            }
+
+            a{
+                width: 50px;
+                
+                img{
+                    margin: 0;
                 }
             }
         }
