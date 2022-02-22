@@ -17,6 +17,11 @@ export const FontStyle = createGlobalStyle`
     src: url('/fonts/proximanova-regular-webfont.ttf') format('truetype');
     font-weight: 400;
 }
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('/fonts/proximanova-light-webfont.ttf') format('truetype');
+    font-weight: 300;
+}
 
 body {
     font-family: 'Proxima Nova';
@@ -55,6 +60,10 @@ td {
     font-weight: 400;
 }
 
+[class*="-light"] {
+    font-weight: 300;
+}
+
 [class*="titulo44"] {
     font-size: 44px; 
 }
@@ -67,9 +76,14 @@ td {
     font-size: 41px; 
 }
 
+[class*="titulo36"] {
+    font-size: 36px; 
+}
+
 [class*="titulo34"] {
     font-size: 34px; 
 }
+
 [class*="titulo26"] {
     font-size: 26px;
 }
@@ -92,6 +106,10 @@ td {
 }
 [class*="p12"] {
    font-size: 12px;
+}
+
+[class*="p10"] {
+   font-size: 10px;
 }
 
 @media(max-width:800px){

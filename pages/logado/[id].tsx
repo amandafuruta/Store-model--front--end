@@ -68,71 +68,82 @@ export default function ProdutoDetail(){
                         <>
                             <MainSection>
                     
-                                                <div className="container">
-                                                    <div className="path">
-                                                        <span className="p14-regular">Início</span>
-                                                        <img src="/images/preview.png" alt="" />
-                                                        <span className="p14-regular">{item.category}</span>
-                                                        <img src="/images/preview.png" alt="" />
-                                                        <span className="p14-regular">{item.subCategory}</span>
-                                                        <img src="/images/preview.png" alt="" />
-                                                        <span className="p14-bold">{item.name}</span>
-                                                    </div>
+                                <div className="container">
+                                    <div className="path">
+                                        <span className="p14-regular">Início</span>
+                                        <img src="/images/preview.png" alt="" />
+                                        {item.category?
+                                            <>
+                                                <span className="p14-regular">{item.category}</span>
+                                                <img src="/images/preview.png" alt="" />
+                                            </>
+                                            : <></>
+                                        }
 
-                                                    <div className="details">
-                                                        <div className="mini_pics">
-                                                            {
-                                                                item.galery != null? 
-                                                                    item.galery.map((photos, index)=>{
-                                                                        return(
-                                                                            <div className="box_mini" onClick={() => click(index)} id={position==index? 'active' : ''}>
-                                                                                <img src={photos} alt="" />
-                                                                            </div>
-                                                                        )
-                                                                    })
-                                                                :
-                                                                <></>
-                                                            }
-                                                        </div>
+                                        {item.subCategory?
+                                            <>
+                                                <span className="p14-regular">{item.subCategory}</span>
+                                                <img src="/images/preview.png" alt="" />
+                                            </>
+                                            : <></>
+                                        }
+                                        <span className="p14-bold">{item.name}</span>
+                                    </div>
 
-                                                        <div className="left_side">
-                                                            {
-                                                                item.galery != null?
-                                                                    <div className="main_pic">
-                                                                        <img src={item.galery[position]} alt="" />
-                                                                    </div>
-                                                                :
-                                                                <></>   
-                                                            }
-
-                                                            <div className="info_details">
-                                                                <h2 className="p24-bold">{item.name}</h2>
-
-                                                                <div className="price">
-                                                                    <span className="p21-bold" style={{color:"#524E4E"}}>R$ </span>
-                                                                    <span className="titulo42-bold" style={{color:"var(--primary-color)"}}>{item.value}</span>
-                                                                </div>
-
-                                                                {
-                                                                    item.installments != null?
-                                                                        <span className="p18-regular" style={{marginBottom:"20px"}}>Parcele em {item.installments} sem juros</span>
-                                                                    :
-                                                                    <></>
-                                                                }
-
-                                                                <div className="unit">
-                                                                    <button onClick={() => units>1 ? setUnits(units - 1) : ''}><AiOutlineMinus/></button>
-                                                                    <span className="titulo41-regular">{units}</span>
-                                                                    <button onClick={() => setUnits(units + 1)}><AiOutlinePlus/></button>
-                                                                </div>
-
-                                                                <button className="add_cart"><img src="/images/cart.png"/><span className="p18-bold">Adicionar</span></button>
+                                    <div className="details">
+                                        <div className="mini_pics">
+                                            {
+                                                item.galery != null? 
+                                                    item.galery.map((photos, index)=>{
+                                                        return(
+                                                            <div className="box_mini" onClick={() => click(index)} id={position==index? 'active' : ''}>
+                                                                <img src={photos} alt="" />
                                                             </div>
+                                                        )
+                                                    })
+                                                :
+                                                <></>
+                                            }
+                                        </div>
 
-                                                        </div>
-
+                                        <div className="left_side">
+                                            {
+                                                item.galery != null?
+                                                    <div className="main_pic">
+                                                        <img src={item.galery[position]} alt="" />
                                                     </div>
-                                                </div>    
+                                                :
+                                                <></>   
+                                            }
+
+                                            <div className="info_details">
+                                                <h2 className="p24-bold">{item.name}</h2>
+
+                                                <div className="price">
+                                                    <span className="p21-bold" style={{color:"#524E4E"}}>R$ </span>
+                                                    <span className="titulo42-bold" style={{color:"var(--primary-color)"}}>{item.value}</span>
+                                                </div>
+
+                                                {
+                                                    item.installments != null?
+                                                        <span className="p18-regular" style={{marginBottom:"20px"}}>Parcele em {item.installments} sem juros</span>
+                                                    :
+                                                    <></>
+                                                }
+
+                                                <div className="unit">
+                                                    <button onClick={() => units>1 ? setUnits(units - 1) : ''}><AiOutlineMinus/></button>
+                                                    <span className="titulo41-regular">{units}</span>
+                                                    <button onClick={() => setUnits(units + 1)}><AiOutlinePlus/></button>
+                                                </div>
+
+                                                <button className="add_cart"><img src="/images/cart.png"/><span className="p18-bold">Adicionar</span></button>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>    
                             </MainSection>
                             
                             <About>
@@ -154,11 +165,17 @@ export default function ProdutoDetail(){
                                         
                                     </div>
 
-                                    <h3 className="p24-regular presentation_title">Video apresentação</h3>
                                     
-                                    <div className="video_box">
-                                        <iframe className="video" src={item.video_url} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                                    </div>
+                                    {item.video_url?
+                                        <>
+                                            <h3 className="p24-regular presentation_title">Video apresentação</h3>
+                                            <div className="video_box">
+                                                <iframe className="video" src={item.video_url} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                            </div>
+                                        </>
+                                    :
+                                        <></>
+                                    }
 
                                     <p className="p16-regular">{item.video_text}</p>
                                 </div>

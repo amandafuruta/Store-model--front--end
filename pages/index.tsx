@@ -1,9 +1,23 @@
-import AreaLogada from "./logado"
+
+import Logado from "./logado"
+import Login from "./login"
+
+import { useState } from 'react'
 
 export default function Index() {
+  const [logado, setLogado] = useState(true)
 
   return (
-    <AreaLogada/>
+    <>
+      {
+        logado?
+        <Logado/>
+        :
+        <Login/>
+      }
+    </>
+    
+    
   )
 };
 

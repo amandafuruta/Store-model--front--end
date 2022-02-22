@@ -5,12 +5,13 @@ interface Props{
     description: string;
     price: string;
     id:number;
+    margin: number;
 }
 
 export default function Card(props:Props){
     return(
         <Link href={`/logado/${props.id}`}>
-            <Style>
+            <Style style={{marginBottom: props.margin}}>
                 <div className="img_box">
                     <img src={props.photo}/>
                 </div>

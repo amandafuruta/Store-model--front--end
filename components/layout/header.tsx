@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import Link from 'next/link'
+import Link from "next/Link"
 import {useState} from 'react'
 
 import MobileMenu from './menu_mobile'

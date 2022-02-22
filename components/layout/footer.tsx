@@ -19,10 +19,10 @@ export default function FooterComponent() {
                     <div className="box">
                         <div className="column_second">
                             <ul>
-                                <li><Link href=""><a className="p16-regular">Sobre</a></Link></li>
-                                <li><Link href=""><a className="p16-regular">Termo de uso</a></Link></li>
-                                <li><Link href=""><a className="p16-regular">Política de Privacidade</a></Link></li>
-                                <li><Link href=""><a className="p16-regular">SAC <span className="p16-regular">/</span> Contato</a></Link></li>
+                                <li><Link href="/sobre"><a className="p16-regular">Sobre</a></Link></li>
+                                <li><Link href="/termo_uso"><a className="p16-regular">Termo de uso</a></Link></li>
+                                <li><Link href="/politica_privacidade"><a className="p16-regular">Política de Privacidade</a></Link></li>
+                                <li><Link href="/sac_contato"><a className="p16-regular">SAC <span className="p16-regular">/</span> Contato</a></Link></li>
                             </ul>
                         </div>
 
