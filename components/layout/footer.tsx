@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import Link from 'next/Link'
+import Link from 'next/link'
 
 export default function FooterComponent() {
     const phone = ''
@@ -78,7 +78,7 @@ const Style = styled.footer`
         width: 100%;
         margin: 0 auto;
         justify-content: space-between;
-        display: flex;
+        display: flex; 
     }
 
     .main_content{
@@ -86,6 +86,7 @@ const Style = styled.footer`
         padding: 135px 20px 84px;
 
         .container{
+            
             .box{
                 display: flex;
                 max-width: 338px;
@@ -102,6 +103,10 @@ const Style = styled.footer`
                             color: #fff;
 
                             span{
+                                color: var(--primary-color);
+                            }
+
+                            &:hover{
                                 color: var(--primary-color);
                             }
                         }

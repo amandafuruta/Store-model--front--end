@@ -42,6 +42,12 @@ button:hover {
         transition: 0.25s;
     }
 }
+
+button{
+    border:none;
+    outline: none;
+}
+
 .react-select__single-value {
     transform: translateY(-25%) !important;
 }

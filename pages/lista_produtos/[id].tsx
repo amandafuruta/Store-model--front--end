@@ -137,13 +137,10 @@ export default function Lista_produtos(){
                             <div className="products">
                                 {
                                     produtos.map((item, index) => {
-                                        return <Card key={index} id={item.id} photo={item.mainPhoto} description={item.name} price={item.value} margin={150}/>
+                                        return <Card key={index} id={item.id} photo={item.mainPhoto} description={item.name} price={item.value} margin={100}/>
                                     })
                                 }
-                            </div>
-
-                            
-                            
+                            </div>                      
                         </div>
                     </div>
                 </div>

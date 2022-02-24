@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Link from 'next/Link'
+import Link from 'next/link'
 interface Props{
     photo: string;
     description: string;
@@ -36,8 +36,10 @@ const Style = styled.div`
     align-items: center;
     width: 240px;
     margin-bottom: 66px;
+    
     place-self: center;
     cursor: pointer;
+    padding: 25px 0;
 
     .img_box{
         width: 150px;
@@ -81,8 +83,17 @@ const Style = styled.div`
         img{
             margin-right: 11px;
         }
+    }
 
-        &:hover{
+    &:hover{
+        box-shadow: 3px 3px 25px #e2dede;
+
+        .img_box{
+            width: 152px;
+            height: 152px;
+        }
+
+        button{
             background-color: var(--hover-color);
         }
     }

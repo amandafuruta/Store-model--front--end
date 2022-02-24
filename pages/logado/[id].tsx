@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import {useRouter} from 'next/router'
 import parser from 'html-react-parser'
+import Link from 'next/link'
 
 import styled from "styled-components"
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
@@ -52,10 +53,15 @@ export default function ProdutoDetail(){
     const ID = router.query.id;
     const [position, setPosition] = useState(0)
     const [units, setUnits] = useState(1)
-
+    const [card_cart, setCardCart] = useState(false)
 
     function click(id:any){
         setPosition(id)
+    }
+
+    function addCart(item:any){
+        setCardCart(true)
+        console.log(item)
     }
 
     return(
@@ -130,20 +136,48 @@ export default function ProdutoDetail(){
                                                     :
                                                     <></>
                                                 }
-
                                                 <div className="unit">
                                                     <button onClick={() => units>1 ? setUnits(units - 1) : ''}><AiOutlineMinus/></button>
                                                     <span className="titulo41-regular">{units}</span>
                                                     <button onClick={() => setUnits(units + 1)}><AiOutlinePlus/></button>
                                                 </div>
 
-                                                <button className="add_cart"><img src="/images/cart.png"/><span className="p18-bold">Adicionar</span></button>
+                                                <button onClick={()=> addCart(item.id) } className="add_cart"><img src="/images/cart.png"/><span className="p18-bold">Adicionar</span></button>
                                             </div>
 
                                         </div>
 
                                     </div>
-                                </div>    
+                                </div>  
+
+                                <CardCart style={{display: card_cart? 'flex' : 'none'}}>
+                                    <div className="btn">
+                                        <button onClick={()=>setCardCart(false)}><img src="/images/close_black.png"/></button>
+                                    </div>
+
+                                    <div className="check">
+                                        <img src="/images/check.png"/>
+                                        <span className="p14-regular">Item adicionado ao seu carrinho</span>
+                                    </div>
+
+                                    <div className="produto">
+                                        <div className="img">
+                                            <img src={item.mainPhoto}/>
+                                        </div>
+                                        <span className="p14-regular">{item.name}</span>
+                                    </div>
+
+                                    <div className="buttons">
+                                        <Link href="/carrinho">
+                                            <button className="orange">
+                                                <img src="/images/cart.png"/>
+                                                <span className="p14-bold">Ver meu carrinho (3)</span>
+                                            </button>
+                                        </Link>
+
+                                        <button onClick={() => setCardCart(false)} className="p14-bold continue">Continuar comprando</button>
+                                    </div>
+                                </CardCart>  
                             </MainSection>
                             
                             <About>
@@ -197,7 +231,7 @@ export default function ProdutoDetail(){
                     <div className="products">
                         {
                             relacionados.map((item, index) => {
-                                return <Card key={index} id={item.id} photo={item.mainPhoto} description={item.name} price={item.value} />
+                                return <Card key={index} id={item.id} photo={item.mainPhoto} description={item.name} price={item.value} margin={120} />
                             })
                         }
                     </div>
@@ -205,6 +239,9 @@ export default function ProdutoDetail(){
             </CervejasRelacionadas>
 
             <BannerRodape/>
+            
+            
+
         </>
 
     )
@@ -451,6 +488,140 @@ const CervejasRelacionadas = styled.section`
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+    }
+`
+
+const CardCart = styled.div`
+    position: absolute;
+    padding: 21px 25px 35px 32px;
+    border-radius: 8px;
+    background-color: #fff;
+    top: 109px;
+    right: 40%;
+    flex-direction: column;
+    max-width: 395px;
+    width: 100%;
+    box-shadow: 3px 3px 10px #666060;
+
+    .btn{
+        text-align: end;
+
+        button{
+            border: none;
+            background-color: #fff;
+            outline: none;s
+        }
+    }
+
+    .check{
+        display: flex;
+        align-items: center;
+        margin-bottom: 24px;
+
+        img{
+            margin-right: 12px;
+            width: 16px;
+            height: 12px;
+        }
+    }
+
+    .produto{
+        display: flex;
+        align-items: center;
+        margin-bottom: 24px;
+
+        .img{
+            height: 70px;
+            width: 70px;
+            margin-right: 12px;
+            img{
+                object-fit: contain;
+                width: 100%;
+            }
+        }
+
+        span{
+            max-width: 255px;
+        }
+    }
+
+    .buttons{
+        text-align: center;
+
+        .orange{
+            width: 331px;
+            background-color: var(--primary-color);
+            border: none;
+            border-radius: 4px;
+            padding: 13px 0;
+            margin-bottom: 17px;
+
+            img{
+                margin-right: 8px;
+            }
+
+            span{
+                color: #fff;
+            }
+        }
+
+        .continue{
+            color: var(--primary-color);
+            background-color: #fff;
+        }
+    }
+
+    @media(max-width:670px){
+        right: 28%;
+    }
+
+    @media(max-width:650px){
+        right: 20%;
+    }
+
+    @media(max-width:500px){
+        right: 10%;
+    }
+
+    @media(max-width:450px){
+        right: 5%;
+    }
+
+    @media(max-width:420px){
+        max-width: 380px;
+        padding: 21px 25px 35px 25px;
+    }
+
+    @media(max-width:405px){
+        right: 2%;
+    }
+
+    @media(max-width:390px){
+        right: 1%;
+    }
+
+    @media(max-width:385px){
+        max-width: 350px;
+        right: 4%;
+
+        .buttons{
+            .orange{
+                width: 275px;
+            }
+        }
+    }
+
+    @media(max-width:370px){
+        right: 2%;       
+        padding: 21px 20px 35px 20px;
+    }
+
+    @media(max-width:360px){
+        right: 1%;
+    }
+
+    @media(max-width:350px){
+        right: 0;
     }
 `
 

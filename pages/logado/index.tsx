@@ -41,7 +41,7 @@ export default function AreaLogada(){
                     <div className="products">
                         {
                             produtos.map((item, index) => {
-                                return <Card key={index} id={item.id} photo={item.mainPhoto} description={item.name} price={item.value} />
+                                return <Card key={index} id={item.id} photo={item.mainPhoto} description={item.name} price={item.value} margin={16} />
                             })
                         }
 
@@ -66,7 +66,7 @@ export default function AreaLogada(){
                     <div className="products">
                         {
                             presentes.map((item, index) => {
-                                return <Card key={index} id={item.id} photo={item.mainPhoto} description={item.name} price={item.value} />
+                                return <Card key={index} id={item.id} photo={item.mainPhoto} description={item.name} price={item.value} margin={66}/>
                             })
                         }
                     </div>

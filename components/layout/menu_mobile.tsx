@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Link from 'next/Link'
+import Link from 'next/link'
 
 export default function (props:any){
     

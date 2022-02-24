@@ -95,6 +95,10 @@ td {
     font-size: 21px; 
 }
 
+[class*="p20"] {
+    font-size: 20px; 
+}
+
 [class*="p18"] {
     font-size: 18px; 
 }

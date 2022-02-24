@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { useState } from 'react'
 
-import Link from 'next/Link'
+import Link from 'next/link'
 import { useRouter } from "next/router";
 
 export default function Subheader(){

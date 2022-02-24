@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import styled from 'styled-components'
 
-import Link from 'next/Link'
+import Link from 'next/link'
 
 export default function Cookies(){
     const [visible, setVisible] = useState(true)
@@ -15,7 +15,7 @@ export default function Cookies(){
             <div className="anchor">
                <Link href="/politica_privacidade"><a className="p10-bold">Política de privacidade</a></Link>
                <span>-</span> 
-               <Link href="termo_uso"><a className="p10-bold">Termos de uso</a></Link>
+               <Link href="/termo_uso"><a className="p10-bold">Termos de uso</a></Link>
             </div>
 
             <div className="button">

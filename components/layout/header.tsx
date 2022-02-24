@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import Link from "next/Link"
+import Link from "next/link"
 import {useState} from 'react'
 
 import MobileMenu from './menu_mobile'
@@ -26,7 +26,7 @@ export default function HeaderComponent() {
                     <img className="mainLogo" src="/images/logomain.png" alt="" />
                 </Link>
 
-                <Link href="/">
+                <Link href="carrinho">
                     <a href="">
                         <img src="/images/cartIcon.png" alt="" />
                         <span className="p14-bold cart_text">Carrinho</span>
