@@ -29,9 +29,9 @@ export default function FooterComponent() {
                         <div className="column_third">
                             <ul>
                                 <li><Link href=""><a className="p16-regular">Cervejas</a></Link></li>
-                                <li><Link href=""><a className="p16-regular">Kits especiais!</a></Link></li>
-                                <li><Link href=""><a className="p16-regular">Monte seu kit</a></Link></li>
-                                <li><Link href=""><a className="p16-regular">Promoções</a></Link></li>
+                                <li><Link href="/lista_produtos/kits_especiais"><a className="p16-regular">Kits especiais!</a></Link></li>
+                                <li><Link href="/lista_produtos/monte_seu_kit"><a className="p16-regular">Monte seu kit</a></Link></li>
+                                <li><Link href="/lista_produtos/promocoes"><a className="p16-regular">Promoções</a></Link></li>
                                 <li><Link href=""><a className="p16-regular">Receitas</a></Link></li>
                             </ul>
                         </div>

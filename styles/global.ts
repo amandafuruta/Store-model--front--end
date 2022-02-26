@@ -45,7 +45,7 @@ button:hover {
 
 button{
     border:none;
-    outline: none;
+    outline: none !important;
 }
 
 .react-select__single-value {
@@ -65,7 +65,7 @@ ol,
 ul {
     list-style: none !important;
     padding-left: 0 !important;
-    margin-bottom: 0 !important;
+    margin-bottom: 0;
 }
 
 input{

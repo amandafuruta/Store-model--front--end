@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import Link from 'next/link'
 
-export default function Cookies(){
+export default function CookiesCard(){
     const [visible, setVisible] = useState(true)
 
     return(

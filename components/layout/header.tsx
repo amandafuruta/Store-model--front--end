@@ -21,7 +21,7 @@ export default function HeaderComponent() {
                 <div className="division_1_mobile">
                     <button onClick={() => setMenuOpen(!menuOpen)}><img src="/images/menuIcon.png"/></button>
                 </div>
-
+                
                 <Link href="/">
                     <img className="mainLogo" src="/images/logomain.png" alt="" />
                 </Link>
@@ -72,9 +72,9 @@ const Header = styled.header`
             display: flex;
             align-items: center;
         }
+
         .logo{
             margin-right: 16px;
-
         }
 
         .itapeva{
@@ -125,6 +125,7 @@ const Header = styled.header`
 
         .mainLogo{
             cursor: pointer;
+            margin-right: 91px;
         }
     }
 
@@ -141,6 +142,11 @@ const Header = styled.header`
                     border: none;
                     background-color:#24242D;
                 }
+            }
+
+            .mainLogo{
+                margin-right: 0;
+                margin-left: 50px;
             }
         }
         
@@ -160,6 +166,7 @@ const Header = styled.header`
                 width: 100%;
                 display: flex;
                 justify-content: space-between;
+
                 button{
                     border: none;
                     background-color: #24242D;
@@ -180,6 +187,10 @@ const Header = styled.header`
                 img{
                     margin: 0;
                 }
+            }
+
+            .mainLogo{
+                margin-left: 0;
             }
         }
     }

@@ -1,5 +1,5 @@
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Subheader from "components/subheader"
 import Card from "components/card"
@@ -24,7 +24,6 @@ export default function Lista_produtos(){
     const [filter_content, setFilterContent] = useState("Relevantes")
     const [filter_open, setFilterOpen] = useState(false)
     const [orange_filter_open, setOrangeFilterOpen] = useState(false)
-    
     
     return(
         <>
