@@ -14,7 +14,7 @@ import CookiesCard from '../components/cookies'
 
 
 export default function CustomApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
-    const [logado, setLogado] = useState(false)
+    const [logado, setLogado] = useState(true)
     
     return (
         // <SessionProvider session={session}>

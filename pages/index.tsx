@@ -6,7 +6,7 @@ import Redefinir_Senha from './login/redefinirsenha'
 import { useState } from 'react'
 
 export default function Index() {
-  const [logado, setLogado] = useState(false)
+  const [logado, setLogado] = useState(true)
 
   return (
     <>
@@ -14,7 +14,7 @@ export default function Index() {
         logado?
         <Logado/>
         :
-        <Redefinir_Senha/>
+        <Login/>
       }
     </>
     
