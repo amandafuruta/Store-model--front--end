@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useField } from '@unform/core';
-import StyleInput from './styleInput'
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import styled from "styled-components"
 
-
-export default function Input({ id,label, name,changeStyle,mascaraDeTelefone,password, ...rest }: any) {
+export default function Input({ id,label, name, type,changeStyle,password, ...rest }: any) {
+    const [showPassword, setShowpassword] = useState(true)
+    const [passwordType, setPasswordType] = useState("password")
 
     const inputRef = useRef(null);
 
@@ -19,15 +21,44 @@ export default function Input({ id,label, name,changeStyle,mascaraDeTelefone,pas
 
     return (
         
-        <StyleInput>
+        <InputComponent>
             <div className={changeStyle ? 'contato-style' : ''}>
+                
                 {label ? <label className="link2-regular" htmlFor={id}>{label}</label> : ''}
-
-                <input id={id} className="paragrafo1-regular" defaultValue={defaultValue} ref={inputRef} {...rest} />
+                
+                <div className="input">
+                    <input id={id} className="paragrafo1-regular" type={type=="password" && showPassword == true? "password" : "text" } defaultValue={defaultValue} ref={inputRef} {...rest} />
+                    {
+                        password?
+                            showPassword?
+                                <AiFillEye size={20} color='#7a7a7a' onClick={() => setShowpassword(!showPassword)}/>
+                            :
+                                <AiFillEyeInvisible size={20} color='#7a7a7a' onClick={() => setShowpassword(!showPassword)}/>
+                        :
+                        <></>
+                    }
+                </div>
+                
                 {error && <span className="error-message">{error}</span>}
             </div>
-        </StyleInput>
+        </InputComponent>
         
 
     );
 }
+
+
+
+const InputComponent =styled.div`
+    div{
+        .input{
+            position: relative;
+
+            svg{
+                position: absolute;
+                right: 20px;
+                top: 28%;
+            }
+        }
+    }
+` 

@@ -8,7 +8,7 @@ import ArrowClose from '../../public/images/arrowclose.png'
 
 import styled from "styled-components";
 
-export default function (props:any){
+export default function MobileMenu(props:any){
     const [blend, setBlend] = useState(false)
     const [pack, setPack] = useState(false)
     const [edlimited, setEdlimited] = useState(false)

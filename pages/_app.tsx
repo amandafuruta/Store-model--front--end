@@ -10,11 +10,11 @@ import "swiper/css/bundle";
 
 import { useState } from 'react'
 
-import Cookies from '../components/cookies'
+import CookiesCard from '../components/cookies'
 
 
 export default function CustomApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
-    const [logado, setLogado] = useState(true)
+    const [logado, setLogado] = useState(false)
     
     return (
         // <SessionProvider session={session}>
@@ -76,7 +76,7 @@ export default function CustomApp({ Component, pageProps: { session, ...pageProp
                 {
                     logado? 
                         <BaseLayoutComponent>
-                            <Cookies/>
+                            <CookiesCard/>
                             <Component {...pageProps} />
                         </BaseLayoutComponent>
                     : 
@@ -88,6 +88,6 @@ export default function CustomApp({ Component, pageProps: { session, ...pageProp
                 }
                 
         </>       
-        /* </SessionProvider> */
+        // </SessionProvider>
     )
 }

@@ -9,7 +9,7 @@ import { FormHandles } from '@unform/core';
 
 export default function Redefinir_Senha() {
     const formRef = useRef<FormHandles>(null);
-    const [confirm, setConfirm] = useState(true)
+    const [confirm, setConfirm] = useState(false)
     
     return (
         <Style>
@@ -31,8 +31,8 @@ export default function Redefinir_Senha() {
                         <span className="p14-regular p2">Informe uma nova senha abaixo</span>
 
                         <Form method="post" ref={formRef} onSubmit={() =>console.log('')} >
-                        <Input id="password" type="password" name="password" placeholder="Nova senha" />
-                        <Input id="password" type="password" name="password" placeholder="Confirme a senha" />
+                        <Input id="password" type="password" name="password" placeholder="Nova senha" password={true} />
+                        <Input id="password" type="password" name="password" placeholder="Confirme a senha" password={true} />
 
                         <div className="buttons" >
                             <button className="p14-bold" >Atualizar senha</button>

@@ -32,7 +32,7 @@ export default function Login() {
 
             <Form method="post" ref={formRef} onSubmit={() =>console.log('')} >
               <Input id="email" type="text" name="email" placeholder="Email" />
-              <Input id="password" type="password" name="password" placeholder="Senha" />
+              <Input id="password" type="password" name="password" placeholder="Senha"  password={true}/>
               <div className="buttons">
                   <button className="p14-bold">Entrar</button>
                   <Link href="/login/esquecisenha"><a className="p14-bold" >Esqueci minha senha</a></Link>
