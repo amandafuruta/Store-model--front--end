@@ -49,7 +49,7 @@ export default function MobileMenu(props:any){
                     </ul>
             </ul>
 
-            <Link href="/"><a className="p14-bold ver_tudo">Ver tudo</a></Link>
+            <Link   href="/"><a className="p14-bold ver_tudo">Ver tudo</a></Link>
         </Style>
     )
 }

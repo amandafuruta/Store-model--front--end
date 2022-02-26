@@ -26,7 +26,7 @@ export default function HeaderComponent() {
                     <img className="mainLogo" src="/images/logomain.png" alt="" />
                 </Link>
 
-                <Link href="carrinho">
+                <Link href="/carrinho">
                     <a href="">
                         <img src="/images/cartIcon.png" alt="" />
                         <span className="p14-bold cart_text">Carrinho</span>

@@ -72,9 +72,9 @@ export default function ProdutoDetail(){
                     return(
                         item.id == ID?
                         <>
-                            <MainSection>
+                            <MainSection key={index}>
                     
-                                <div className="container">
+                                <div className="container" >
                                     <div className="path">
                                         <span className="p14-regular">Início</span>
                                         <img src="/images/preview.png" alt="" />
