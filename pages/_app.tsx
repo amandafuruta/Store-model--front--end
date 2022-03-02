@@ -4,7 +4,7 @@ import { FontStyle } from "../styles/fonts"
 import type { AppProps } from 'next/app'
 import Head from "next/head";
 import BaseLayoutComponent from 'components/layout/base'
-import { SessionProvider } from "next-auth/react"
+// import { SessionProvider } from "next-auth/react"
 import Login from "./login"
 import "swiper/css/bundle";
 
@@ -17,8 +17,8 @@ export default function CustomApp({ Component, pageProps: { session, ...pageProp
     const [logado, setLogado] = useState(false)
     // const { data: Session } = useSession()
     return (
-        <SessionProvider session={session}>
-         
+        // <SessionProvider session={session}>
+         <>
                 <Head>
                     <title>Von Borstel</title>
                     <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
@@ -88,8 +88,8 @@ export default function CustomApp({ Component, pageProps: { session, ...pageProp
                 } 
 
 
-                
-        </SessionProvider> 
+        {/* </SessionProvider>  */}
+         </>    
     
     )
 }
