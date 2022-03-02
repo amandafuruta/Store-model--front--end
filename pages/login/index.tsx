@@ -8,7 +8,7 @@ import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 
 
-export default function Login() {
+export default function Login(props:any) {
   const formRef = useRef<FormHandles>(null);
 
   return (
@@ -34,7 +34,7 @@ export default function Login() {
               <Input id="email" type="text" name="email" placeholder="Email" />
               <Input id="password" type="password" name="password" placeholder="Senha"  password={true}/>
               <div className="buttons">
-                  <button className="p14-bold">Entrar</button>
+                  <button className="p14-bold" onClick={() => props.logar(true)  }>Entrar</button>
                   <Link href="/login/esquecisenha"><a className="p14-bold" >Esqueci minha senha</a></Link>
               </div>
             </Form>

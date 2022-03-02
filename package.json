@@ -13,11 +13,13 @@
     "@unform/core": "^2.1.6",
     "@unform/web": "^2.1.6",
     "axios": "^0.21.4",
+    "body-parser": "^1.19.2",
+    "create-next-app": "^12.1.0",
     "dotenv": "^16.0.0",
+    "express": "^4.17.3",
     "html-react-parser": "^1.4.8",
     "js-cookie": "^3.0.1",
     "next": "11.1.2",
-    "next-auth": "^3.29.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-icons": "^4.3.1",
@@ -28,6 +30,7 @@
     "yup": "^0.32.9"
   },
   "devDependencies": {
+    "@types/next-auth": "^3.15.0",
     "@types/react": "17.0.20",
     "@types/styled-components": "^5.1.10",
     "@typescript-eslint/eslint-plugin": "^4.31.0",

@@ -4,21 +4,21 @@ import { FontStyle } from "../styles/fonts"
 import type { AppProps } from 'next/app'
 import Head from "next/head";
 import BaseLayoutComponent from 'components/layout/base'
-// import { SessionProvider } from "next-auth/react"
-
+import { SessionProvider } from "next-auth/react"
+import Login from "./login"
 import "swiper/css/bundle";
 
 import { useState } from 'react'
 
 import CookiesCard from '../components/cookies'
-
+// import { useSession, signIn, signOut } from "next-auth/react"
 
 export default function CustomApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
-    const [logado, setLogado] = useState(true)
-    
+    const [logado, setLogado] = useState(false)
+    // const { data: Session } = useSession()
     return (
-        // <SessionProvider session={session}>
-         <>
+        <SessionProvider session={session}>
+         
                 <Head>
                     <title>Von Borstel</title>
                     <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
@@ -82,12 +82,17 @@ export default function CustomApp({ Component, pageProps: { session, ...pageProp
                     : 
                     <>
                     
-                        <Component {...pageProps} />
+                        <Login logar={(i:boolean)=>setLogado(i) }/>
 
                     </>
-                }
+                } 
+
+
                 
-        </>       
-        // </SessionProvider>
+        </SessionProvider> 
+    
     )
 }
+
+
+
