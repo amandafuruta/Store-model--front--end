@@ -3,14 +3,13 @@ import { useField } from '@unform/core';
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import styled from "styled-components"
 
-export default function Input({ id,label, name, type,changeStyle,password, ...rest }: any) {
+export default function Input({ id, label, name, type, changeStyle, password, ...rest }: any) {
     const [showPassword, setShowpassword] = useState(true)
-    const [passwordType, setPasswordType] = useState("password")
 
     const inputRef = useRef(null);
 
     const { fieldName, registerField, defaultValue, error } = useField(name);
-
+    
     useEffect(() => {
         registerField({
             name: fieldName,
@@ -18,7 +17,7 @@ export default function Input({ id,label, name, type,changeStyle,password, ...re
             path: 'value'
         })
     }, [fieldName, registerField])
-
+    
     return (
         
         <InputComponent>

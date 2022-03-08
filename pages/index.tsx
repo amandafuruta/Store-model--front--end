@@ -1,5 +1,5 @@
 
-import Logado from "./logado"
+import Logado from "./home"
 import Login from "./login"
 import Redefinir_Senha from './login/redefinirsenha'
 
@@ -9,16 +9,7 @@ export default function Index() {
   const [logado, setLogado] = useState(true)
 
   return (
-    <>
-      {
-        logado?
-        <Logado/>
-        :
-        <Login/>
-      }
-    </>
-    
-    
+    <Login/>
   )
 };
 

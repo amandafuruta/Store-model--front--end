@@ -95,7 +95,24 @@ const Style = styled.div`
         background-color: var(--primary-color);
         color: #fff;
         border-radius: 4px;
-        padding: 15px 149px;
-        
+        padding: 15px 149px;       
+    }
+
+    @media(max-width: 425px){
+        .ver_tudo{
+            padding: 15px 137px;      
+        }
+    }
+
+    @media(max-width: 401px){
+        .ver_tudo{
+            padding: 15px 125px;      
+        }
+    }
+
+    @media(max-width: 377px){
+        .ver_tudo{
+            padding: 15px 113px;      
+        }
     }
 `

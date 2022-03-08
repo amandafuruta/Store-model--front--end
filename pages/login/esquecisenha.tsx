@@ -132,6 +132,10 @@ const Style = styled.section`
                     border: none;
                     height: 50px;
                     color:#fff;
+
+                    &:hover{
+                        background-color: var(--hover-color);
+                    }
                 }
             }
         }
@@ -149,9 +153,13 @@ const Style = styled.section`
         text-align: center;
         margin-top: 36px;
 
-            img{
-                margin-right: 12px;
-            }
+        img{
+            margin-right: 12px;
+        }
+
+        &:hover{
+            border: 1px solid var(--hover-color);
+        }
     }
 
     @media(max-width:440px){ 

@@ -1,15 +1,28 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link'
 
 import styled from "styled-components";
-import Input from '../../components/input/input'
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
-import { Form } from '@unform/web';
-import { FormHandles } from '@unform/core';
+import { useForm } from 'react-hook-form'
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthContext';
 
 
 export default function Login(props:any) {
-  const formRef = useRef<FormHandles>(null);
+    const [showPassword, setShowpassword] = useState(true)
+
+    const { register, handleSubmit } = useForm();
+    const { signIn } = useContext(AuthContext)
+
+  async function handleSignIn(data:any) {
+    try {
+      data.client = true;
+      await signIn(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <Style>
@@ -30,14 +43,26 @@ export default function Login(props:any) {
             <span className="p18-bold p1">Área restrita ao lojista</span>
             <span className="p14-regular p2">Informe seu e-mail e senha para entrar</span>
 
-            <Form method="post" ref={formRef} onSubmit={() =>console.log('')} >
-              <Input id="email" type="text" name="email" placeholder="Email" />
-              <Input id="password" type="password" name="password" placeholder="Senha"  password={true}/>
+            <form  onSubmit={handleSubmit(handleSignIn)} >
+                <input {...register('username')} id="username" type="text" name="username" placeholder="Email" />
+                
+                <div className="input">
+                    <input  {...register('password')} id="password" type={showPassword? "password" : "text"} name="password" placeholder="Senha"/>
+
+                    {
+                    
+                        showPassword?
+                            <AiFillEye size={20} color='#7a7a7a' onClick={() => setShowpassword(!showPassword)}/>
+                        :
+                            <AiFillEyeInvisible size={20} color='#7a7a7a' onClick={() => setShowpassword(!showPassword)}/>
+                    }
+                </div>
+                
               <div className="buttons">
-                  <button className="p14-bold" onClick={() => props.logar(true)  }>Entrar</button>
+                  <button className="p14-bold" type="submit">Entrar</button>
                   <Link href="/login/esquecisenha"><a className="p14-bold" >Esqueci minha senha</a></Link>
               </div>
-            </Form>
+            </form>
           </div>
         </div>
 
@@ -111,6 +136,18 @@ const Style = styled.section`
             .p2{
                 margin-bottom: 24px;
             }
+
+            form{
+                .input{
+                    position: relative;
+
+                    svg{
+                        position: absolute;
+                        right: 20px;
+                        top: 28%;
+                    }
+                }
+            }
         }
 
             .buttons{
@@ -127,10 +164,17 @@ const Style = styled.section`
                     border: none;
                     height: 50px;
                     color:#fff;
+
+                    &:hover{
+                        background-color: var(--hover-color);
+                    }
                 }
             
                 a{
                     color: var(--primary-color);
+                    &:hover{
+                        color: var(--hover-color);
+                    }
                 }
             }
         }
