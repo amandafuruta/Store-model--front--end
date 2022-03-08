@@ -17,7 +17,6 @@ export default function Login(props:any) {
 
   async function handleSignIn(data:any) {
     try {
-      data.client = true;
       await signIn(data)
     } catch (error) {
       console.log(error)
@@ -45,19 +44,19 @@ export default function Login(props:any) {
 
             <form  onSubmit={handleSubmit(handleSignIn)} >
                 <input {...register('username')} id="username" type="text" name="username" placeholder="Email" />
-                
+
                 <div className="input">
                     <input  {...register('password')} id="password" type={showPassword? "password" : "text"} name="password" placeholder="Senha"/>
 
                     {
-                    
+
                         showPassword?
                             <AiFillEye size={20} color='#7a7a7a' onClick={() => setShowpassword(!showPassword)}/>
                         :
                             <AiFillEyeInvisible size={20} color='#7a7a7a' onClick={() => setShowpassword(!showPassword)}/>
                     }
                 </div>
-                
+
               <div className="buttons">
                   <button className="p14-bold" type="submit">Entrar</button>
                   <Link href="/login/esquecisenha"><a className="p14-bold" >Esqueci minha senha</a></Link>
@@ -91,7 +90,7 @@ const Style = styled.section`
         flex-direction: column;
         justify-content: space-between;
     }
-    
+
     .main_box{
         background-color: var(--bgd-white-color);
         box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
@@ -105,7 +104,7 @@ const Style = styled.section`
             justify-content: center;
             align-items: center;
             margin-bottom: 35px;
-                   
+
             .logo_box{
                 max-width: 122px;
                 width: 100%;
@@ -169,7 +168,7 @@ const Style = styled.section`
                         background-color: var(--hover-color);
                     }
                 }
-            
+
                 a{
                     color: var(--primary-color);
                     &:hover{

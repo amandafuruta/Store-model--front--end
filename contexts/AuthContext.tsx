@@ -41,6 +41,7 @@ export function AuthProvider({ children }:any) {
     const response = await api.post('/users/custom-login', {
       username: username,
       password: password,
+      client:true
     })
 
     setCookie(undefined, 'vonborsteltoken.token', response.data.id, {
