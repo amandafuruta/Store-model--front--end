@@ -10,6 +10,8 @@ import Card from "components/card"
 
 import styled from 'styled-components'
 
+import { api } from '../../services/api'
+
 const produtos = [
     {id: 1, mainPhoto: "/images/product1.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
     {id: 2, mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
@@ -30,24 +32,16 @@ const presentes = [
 
 
 export default function AreaLogada(){
-    const [banner, setBanner] = useState([])  
+    const [banner, setBanner] = useState([])
 
-    // useState(async ()=> {
-        
-    //     axios.get(environment.apiUrl +"banners/get-banners", {
-    //     headers: {
-    //         'Authorization': `Bearer ${accessToken}`,
-    //     }
-    //     })
-    //     .then((res) => {
-    //         console.log(res.data)
-    //     })
-    //     .catch((error) => {
-    //         console.error(error)
-    //     })
-    // })
+    useState(async ()=> {
+        api.get('/banners/get-banners').then(response => {
+            console.log(response.data);
+            setBanner(response.data);
+        })
+    })
 
-    
+
     return(
         <BaseLayoutComponent>
             <Subheader/>
@@ -85,7 +79,7 @@ export default function AreaLogada(){
                         <div className="ad_box"><img src="/images/big_ad1.png"/></div>
                         <div className="ad_box last_ad"><img src="/images/big_ad1.png"/></div>
                     </div>
-                    
+
                     <div className="products">
                         {
                             presentes.map((item, index) => {
@@ -95,7 +89,7 @@ export default function AreaLogada(){
                     </div>
                 </div>
             </Promocionais>
-            
+
             <BannerRodape/>
         </BaseLayoutComponent>
     )
@@ -121,7 +115,7 @@ const Promocionais = styled.section`
         }
 
         h3{
-            margin: 0; 
+            margin: 0;
         }
 
         .products{
@@ -146,7 +140,7 @@ const Promocionais = styled.section`
                 height: 221px;
             }
         }
-        
+
         .banner_anuncio{
             display: flex;
             justify-content: space-between;
@@ -155,7 +149,7 @@ const Promocionais = styled.section`
 
             .ad_box{
                 width: 100%;
-                
+
                 img{
                     object-fit: cover;
                     width: 100%;
@@ -174,11 +168,11 @@ const Promocionais = styled.section`
             .banner_anuncio{
                 flex-wrap: wrap;
                 justify-content:center;
-                
+
                 .last_ad{
                     margin-top: 24px;
                 }
-                
+
             }
         }
     }
@@ -200,15 +194,15 @@ const Promocionais = styled.section`
 
             .banner_anuncio{
                 flex-direction: column;
-                
+
                 .first_ad{
                     margin-bottom: 24px;
                 }
-                
+
             }
         }
     }
-/* 
+/*
     @media(max-width:510px){
         .container{
             .products{

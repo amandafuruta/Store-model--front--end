@@ -37,7 +37,7 @@ export function AuthProvider({ children }:any) {
     // }
 
     if (token){
-      console.log('tem token')
+        Router.push('/home')
     }else{
       Router.push('/')
     }
@@ -57,7 +57,7 @@ export function AuthProvider({ children }:any) {
     api.defaults.headers['X-Access-Token'] = response.data.id
 
     setUser(response.data.user)
-    
+
     Router.push('/home')
   }
 
