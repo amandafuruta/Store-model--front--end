@@ -1,3 +1,4 @@
+import BaseLayoutComponent from "components/layout/base";
 import Subheader from "components/subheader"
 
 import styled from "styled-components";
@@ -10,7 +11,7 @@ const dados = {
 
 export default function Sobre(){
     return(
-        <>
+        <BaseLayoutComponent>
             <Subheader/>
 
             <Style>
@@ -41,7 +42,7 @@ export default function Sobre(){
 
                 </div>
             </Style>
-        </>
+        </BaseLayoutComponent>
 
     )
 }

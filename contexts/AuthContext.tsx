@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from 'react'
 import { setCookie, destroyCookie, parseCookies } from 'nookies'
 import Router from 'next/router'
 import { api } from '../services/api'
-import { AxiosResponse } from 'axios'
+
 
 interface User {
   [key: string]: any
@@ -27,15 +27,21 @@ export function AuthProvider({ children }:any) {
 
   const isAuthenticated = !!user
 
-  // useEffect(() => {
-  //   const { 'vonborsteltoken.token': token } = parseCookies()
+  useEffect(() => {
+     const { 'vonborsteltoken.token': token } = parseCookies()
 
-  //   if (token) {
-  //     api.post('/users/get-user-info').then((response:AxiosResponse) => {
-  //       setUser(response.data)
-  //     })
-  //   }
-  // }, [])
+    // if (token) {
+    //   api.post('/users/get-user-info').then((response:AxiosResponse) => {
+    //     setUser(response.data)
+    //   })
+    // }
+
+    if (token){
+      console.log('tem token')
+    }else{
+      Router.push('/')
+    }
+  }, [])
 
   async function signIn({ username, password }: SignInData) {
     const response = await api.post('/users/custom-login', {
@@ -51,7 +57,7 @@ export function AuthProvider({ children }:any) {
     api.defaults.headers['X-Access-Token'] = response.data.id
 
     setUser(response.data.user)
-
+    
     Router.push('/home')
   }
 

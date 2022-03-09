@@ -22,7 +22,7 @@ export default function HeaderComponent() {
                     <button onClick={() => setMenuOpen(!menuOpen)}><img src="/images/menuIcon.png"/></button>
                 </div>
                 
-                <Link href="/">
+                <Link href="/home">
                     <img className="mainLogo" src="/images/logomain.png" alt="" />
                 </Link>
 

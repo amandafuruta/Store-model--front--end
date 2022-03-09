@@ -7,11 +7,6 @@ import "swiper/css/bundle";
 
 import { AuthProvider } from '../contexts/AuthContext'
 
-import Login from "./login"
-import { useState } from 'react'
-
-import CookiesCard from '../components/cookies'
-
 export default function CustomApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 
     return (
@@ -74,10 +69,7 @@ export default function CustomApp({ Component, pageProps: { session, ...pageProp
 
             <GlobalStyle />
 
-            
-                
-            
-                <Component {...pageProps} />
+            <Component {...pageProps} />
            
 
         </AuthProvider>   

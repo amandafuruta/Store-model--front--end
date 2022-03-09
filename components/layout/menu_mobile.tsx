@@ -16,14 +16,14 @@ export default function MobileMenu(props:any){
     return(
         <Style>
             <ul id="mainul">
-                <li><Link href="/"><a className="p18-bold">India Pale Ale (IPA)</a></Link></li>
-                <li><Link href="/"><a className="p18-bold">Trigo</a></Link></li>
-                <li><Link href="/"><a className="p18-bold">Lager</a></Link></li>
-                <li><Link href="/"><a className="p18-bold">Sour</a></Link></li>
-                <li><Link href="/"><a className="p18-bold">Low carb e sem álcool</a></Link></li>
-                <li><Link href="/"><a className="p18-bold">Importados</a></Link></li>
-                <li><Link href="/"><a className="p18-bold">Nacionais</a></Link></li>
-                <li><Link href="/"><a className="p18-bold">Casa von borstel</a></Link></li>
+                <li><Link href="/home"><a className="p18-bold">India Pale Ale (IPA)</a></Link></li>
+                <li><Link href="/home"><a className="p18-bold">Trigo</a></Link></li>
+                <li><Link href="/home"><a className="p18-bold">Lager</a></Link></li>
+                <li><Link href="/home"><a className="p18-bold">Sour</a></Link></li>
+                <li><Link href="/home"><a className="p18-bold">Low carb e sem álcool</a></Link></li>
+                <li><Link href="/home"><a className="p18-bold">Importados</a></Link></li>
+                <li><Link href="/home"><a className="p18-bold">Nacionais</a></Link></li>
+                <li><Link href="/home"><a className="p18-bold">Casa von borstel</a></Link></li>
                 <li onClick={() => setBlend(!blend)}><a className="p18-bold dropdown">Blend <Image  src={blend?ArrowClose:ArrowOpen}/> </a></li>
 
                     <ul className="subcat" style={{display: blend? "flex" : "none"}}>
@@ -49,7 +49,7 @@ export default function MobileMenu(props:any){
                     </ul>
             </ul>
 
-            <Link   href="/"><a className="p14-bold ver_tudo">Ver tudo</a></Link>
+            <Link href="/home"><a className="p14-bold ver_tudo">Ver tudo</a></Link>
         </Style>
     )
 }

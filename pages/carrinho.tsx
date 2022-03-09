@@ -4,6 +4,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import ProductDetail from '../components/produto_cart_detail'
 import Card from "../components/card"
+import BaseLayoutComponent from 'components/layout/base'
 
 
 const cart:any = [
@@ -93,7 +94,7 @@ export default function Cart(){
       
     return(
         
-        <>
+        <BaseLayoutComponent>
             {
                 cart.length > 0 ?
                     <Style>
@@ -161,7 +162,7 @@ export default function Cart(){
                         <div className="container">
                             <div className="top_box">
                                 <h2 className="p24-bold">Seu carrinho está vazio.</h2>
-                                <p className="p14-regular">Vá para a <Link href="/"><a className="p14-bold">página inicial</a></Link> ou procure no site os produtos que vão te deixar feliz.
+                                <p className="p14-regular">Vá para a <Link href="/home"><a className="p14-bold">página inicial</a></Link> ou procure no site os produtos que vão te deixar feliz.
                                 Quando encontrá-los, clique no botão adicionar ao carrinho ;)</p>
                             </div>
 
@@ -186,7 +187,7 @@ export default function Cart(){
             }
         
             
-        </>
+        </BaseLayoutComponent>
     )
 }
 

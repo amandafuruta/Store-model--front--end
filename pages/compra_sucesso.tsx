@@ -3,19 +3,20 @@ import Subheader from "components/subheader"
 import Link from 'next/link'
 
 import styled from "styled-components"
+import BaseLayoutComponent from 'components/layout/base'
 
 export default function CompraSucesso(){
     return(
-        <>
+        <BaseLayoutComponent>
             <Subheader/>
 
             <Style>
                 <div className="container">
                     <h1 className="title36-bold">O seu pedido foi encaminhado com sucesso!</h1>
-                    <Link href="/"><button className="p18-bold">Voltar à página inicial</button></Link>
+                    <Link href="/home"><button className="p18-bold">Voltar à página inicial</button></Link>
                 </div>
             </Style>
-        </>
+        </BaseLayoutComponent>
     )
 }
 

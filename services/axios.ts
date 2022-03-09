@@ -13,7 +13,7 @@ export function getAPIClient(ctx?: GetServerSidePropsContext) {
     if (token && config && config.headers) {
       config.headers['X-Access-Token'] = token
     }
-    console.log(config)
+   
     return config
   })
 

@@ -6,6 +6,7 @@ import Link from 'next/link'
 import styled from "styled-components"
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
+import BaseLayoutComponent from 'components/layout/base'
 import BannerRodape from "components/banner_rodape"
 import Card from "components/card"
 import Subheader from "components/subheader"
@@ -65,7 +66,7 @@ export default function ProdutoDetail(){
     }
 
     return(
-        <>  
+        <BaseLayoutComponent>  
             <Subheader/>
             {
                 produtos.map((item, index) => {
@@ -242,7 +243,7 @@ export default function ProdutoDetail(){
             
             
 
-        </>
+        </BaseLayoutComponent>
 
     )
 }

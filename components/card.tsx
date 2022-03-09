@@ -10,7 +10,7 @@ interface Props{
 
 export default function Card(props:Props){
     return(
-        <Link href={`/logado/${props.id}`}>
+        <Link href={`/home/${props.id}`}>
             <Style style={{marginBottom: props.margin}}>
                 <div className="img_box">
                     <img src={props.photo}/>

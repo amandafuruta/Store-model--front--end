@@ -6,6 +6,7 @@ import Card from "components/card"
 import CheckBox from "../../components/checkbox"
 
 import styled from 'styled-components'
+import BaseLayoutComponent from 'components/layout/base'
 
 
 const produtos = [
@@ -26,7 +27,7 @@ export default function Lista_produtos(){
     const [orange_filter_open, setOrangeFilterOpen] = useState(false)
     
     return(
-        <>
+        <BaseLayoutComponent>
             <Subheader/>
         
             <Style>
@@ -209,7 +210,7 @@ export default function Lista_produtos(){
                     </div>
                 </div>
             </Style>
-        </>
+        </BaseLayoutComponent>
     )
 }
 
