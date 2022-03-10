@@ -19,7 +19,7 @@ export default function Card(props:Props){
                 <span className="p16-bold descrip">{props.description}</span>
 
                 <div className="price">
-                    <span className="p14-bold real">R$</span>
+                    <span className="p14-bold real">R$ </span>
                     <span className="titulo26-bold price">{props.price}</span>
                 </div>
 
@@ -48,6 +48,8 @@ const Style = styled.div`
 
         img{
             object-fit: contain;
+            width: 100%;
+            height: 100%;
         }
     }
 

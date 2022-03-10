@@ -7,6 +7,7 @@ import CheckBox from "../../components/checkbox"
 
 import styled from 'styled-components'
 import BaseLayoutComponent from 'components/layout/base'
+import { api } from 'services/api'
 
 
 const produtos = [
@@ -25,6 +26,13 @@ export default function Lista_produtos(){
     const [filter_content, setFilterContent] = useState("Relevantes")
     const [filter_open, setFilterOpen] = useState(false)
     const [orange_filter_open, setOrangeFilterOpen] = useState(false)
+    const [categorias, setCategorias] = useState([])
+
+    useState(async() => {
+        api.get("/produtos/get-tags-produtos").then(response => {
+            setCategorias(response.data)
+        })
+    })
     
     return(
         <BaseLayoutComponent>
@@ -35,13 +43,58 @@ export default function Lista_produtos(){
                     <div className="path">
                         <span className="p14-regular">Início</span>
                         <img src="/images/preview.png" alt="" />
-                        <span className="p14-bold">{query.id}</span>
+                        {
+                            query.id == "kits_especiais" ?
+                                <span className="p14-bold">Kits Especiais</span>
+                                :
+                                query.id == "monte_seu_kit"?
+                                    <span className="p14-bold">Monte seu kit</span>
+                                    :
+                                    query.id == "promocoes"?
+                                        <span className="p14-bold">Promoções</span>
+                                        :
+                                        query.id == "puro_malte"?
+                                            <span className="p14-bold">Puro malte</span>
+                                            :
+                                            query.id == "low_carb"?
+                                                <span className="p14-bold">Low carb e sem álcool</span>
+                                                :
+                                                query.id == "von_borstel"?
+                                                    <span className="p14-bold">Casa von borstel</span>
+                                                    :
+                                                    query.id == "long_neck"?
+                                                        <span className="p14-bold">Long necks</span>
+                                                        :
+                                                        query.id == "edicao_limitada "?
+                                                            <span className="p14-bold">Edição limitada</span>
+                                                            :
+                                                            <span className="p14-bold">{query.id}</span>
+                                    
+                        }
+                        
                     </div>
 
                     <div className="body">
                         <div className="left">
+                            {
+                                categorias.map((item:any, index:number) =>{
+                                    return(
+                                        <div className="options_box">
+                                            <p className="p14-bold title">{item.nome}</p>
 
-                            <div className="options_box">
+                                            {
+                                                item.itens.map((i:any)=> {
+                                                    return(
+                                                        <CheckBox title={i.nome} quantity={i.total} name={i.nome} value={i.nome} margin={16} font_size="14px" font_weight={400}  span_font_weight={400}/>
+                                                    )
+                                                })
+                                            }
+                                        </div>
+                                    )
+                                })
+                            }
+
+                            {/* <div className="options_box">
                                 <p className="p14-bold title">Estilos de cerveja</p>
                                 
                                 <CheckBox title="India Pale Ale - IPA " quantity={12} name="India Pale Ale" value="India Pale Ale" margin={16} font_size="14px" font_weight={400}  span_font_weight={400}/>
@@ -85,7 +138,7 @@ export default function Lista_produtos(){
                                     <label className="p14-regular">Acima de R$ 40,00</label>
                                 </div>
                             
-                            </div>
+                            </div> */}
                         </div>
 
                         <div className="right">
@@ -94,20 +147,30 @@ export default function Lista_produtos(){
                                     {
                                         query.id == "kits_especiais" ?
                                             <h1 className="title36-bold">Kits Especiais</h1>
-                                        :
-                                            <>
-                                                {query.id == "monte_seu_kit"?
-                                                    <h1 className="title36-bold">Monte seu kit</h1>
+                                            :
+                                            query.id == "monte_seu_kit"?
+                                                <h1 className="title36-bold">Monte seu kit</h1>
+                                                :
+                                                query.id == "promocoes"?
+                                                    <h1 className="title36-bold">Promoções</h1>
                                                     :
-                                                    <>
-                                                    {query.id == "promocoes"?
-                                                        <h1 className="title36-bold">Promoções</h1>
+                                                    query.id == "puro_malte"?
+                                                        <h1 className="title36-bold">Puro malte</h1>
                                                         :
-                                                        <></>
-                                                    }
-                                                    </>
-                                                }
-                                            </>
+                                                        query.id == "low_carb"?
+                                                            <h1 className="title36-bold">Low carb e sem álcool</h1>
+                                                            :
+                                                            query.id == "von_borstel"?
+                                                                <h1 className="title36-bold">Casa von borstel</h1>
+                                                                :
+                                                                query.id == "long_neck"?
+                                                                    <h1 className="title36-bold">Long necks</h1>
+                                                                    :
+                                                                    query.id == "edicao_limitada "?
+                                                                        <h1 className="title36-bold">Edição limitada</h1>
+                                                                        :
+                                                                        <h1 className="title36-bold">{query.id}</h1>
+                                                
                                     }
                                     <span className="p14-regular">255 produtos encontrados</span>
                                 </div>
@@ -298,7 +361,7 @@ const Style = styled.section`
                 border-radius: 4px;
                 margin-top: 20px;
                 padding: 48px 16px 28px;
-                height:884px;
+                height: fit-content;                
                 margin-right: 34px;
 
                 .options_box:not(:last-child){

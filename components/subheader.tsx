@@ -29,28 +29,28 @@ export default function Subheader(){
 
             <Options style={{display: open? 'flex' : 'none'}}>
                 <div className='column'>
-                    <Link  href=""><a className="p18-bold">IPA</a></Link>
-                    <Link  href=""><a className="p18-bold">Trigo</a></Link>
-                    <Link  href=""><a className="p18-bold">Lager</a></Link>
-                    <Link  href=""><a className="p18-bold">Puro malte</a></Link>
-                    <Link  href=""><a className="p18-bold">Sour</a></Link>
-                    <Link  href=""><a className="p18-bold">Low carb e sem álcool</a></Link>
+                    <Link  href="/lista_produtos/IPA"><a className="p18-bold" onClick={() =>setOpen(!open)}>IPA</a></Link>
+                    <Link  href="/lista_produtos/Trigo"><a  onClick={() =>setOpen(!open)} className="p18-bold">Trigo</a></Link>
+                    <Link  href="/lista_produtos/Lager"><a  onClick={() =>setOpen(!open)} className="p18-bold">Lager</a></Link>
+                    <Link  href="/lista_produtos/puro_malte"><a onClick={() =>setOpen(!open)} className="p18-bold">Puro malte</a></Link>
+                    <Link  href="/lista_produtos/Sour"><a onClick={() =>setOpen(!open)} className="p18-bold">Sour</a></Link>
+                    <Link  href="/lista_produtos/low_carb"><a onClick={() =>setOpen(!open)} className="p18-bold">Low carb e sem álcool</a></Link>
                 </div>
 
                 <div className='column'>
-                    <Link  href=""><a className="p18-bold">Importados</a></Link>
-                    <Link  href=""><a className="p18-bold">Nacionais</a></Link>
-                    <Link  href=""><a className="p18-bold">Casa von borstel</a></Link>
-                    <Link  href=""><a className="p18-bold">Em lata</a></Link>
-                    <Link  href=""><a className="p18-bold">Garrafas</a></Link>
-                    <Link  href=""><a className="p18-bold">Long necks</a></Link>
+                    <Link  href="/lista_produtos/Importados"><a onClick={() =>setOpen(!open)} className="p18-bold">Importados</a></Link>
+                    <Link  href="/lista_produtos/Nacionais"><a onClick={() =>setOpen(!open)} className="p18-bold">Nacionais</a></Link>
+                    <Link  href="/lista_produtos/von_borstel"><a onClick={() =>setOpen(!open)} className="p18-bold">Casa von borstel</a></Link>
+                    <Link  href="/lista_produtos/lata"><a onClick={() =>setOpen(!open)} className="p18-bold">Em lata</a></Link>
+                    <Link  href="/lista_produtos/garrafas"><a onClick={() =>setOpen(!open)} className="p18-bold">Garrafas</a></Link>
+                    <Link  href="/lista_produtos/long_neck"><a onClick={() =>setOpen(!open)} className="p18-bold">Long necks</a></Link>
                 </div>
 
                 <div className='column'>
-                    <Link  href=""><a className="p18-bold">Bleds</a></Link>
-                    <Link  href=""><a className="p18-bold">Packs</a></Link>
-                    <Link  href=""><a className="p18-bold">Edição limitada</a></Link>
-                    <Link  href=""><a className="p18-bold button">Ver tudo</a></Link>
+                    <Link  href="/lista_produtos/Bleds"><a onClick={() =>setOpen(!open)} className="p18-bold">Bleds</a></Link>
+                    <Link  href="/lista_produtos/Packs"><a onClick={() =>setOpen(!open)} className="p18-bold">Packs</a></Link>
+                    <Link  href="/lista_produtos/edicao_limitada"><a onClick={() =>setOpen(!open)} className="p18-bold">Edição limitada</a></Link>
+                    <Link  href=""><a onClick={() =>setOpen(!open)} className="p18-bold button">Ver tudo</a></Link>
                 </div>
             </Options>
         </>

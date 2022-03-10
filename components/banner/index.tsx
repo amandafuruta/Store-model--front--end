@@ -8,12 +8,22 @@ import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
 
 import Banner1 from './banner1'
+import { api } from '../../services/api'
 
 export default function Banner(){
+  const [banner, setBanner] = useState([])
+
+  useState(async ()=> {
+      api.get('/banners/get-banners').then(response => {
+          setBanner(response.data);
+      })
+
+  })
+
     return(
         <Style>
             <Swiper
-            cssMode={true}
+                cssMode={true}
                 slidesPerView={1}
                 spaceBetween={30}
                 pagination={{
@@ -23,44 +33,25 @@ export default function Banner(){
                 modules={[Pagination, Navigation]}
                 className="mySwiper"
             >
-                <SwiperSlide>
-                  <Banner1 
-                    background="/images/bg_banner.png" 
-                    main_text="Lançamento com preços especiais!"
-                    secondary_text="Cervejas selecionadas com preços especiais!"
-                    image="/images/can.png"
-                  />   
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <Banner1 
-                    background="/images/bg_banner.png" 
-                    main_text="Lançamento com preços especiais!"
-                    secondary_text="Cervejas selecionadas com preços especiais!"
-                    image="none"
-                  /> 
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <Banner1 
-                    background="/images/banner2.png" 
-                    main_text=""
-                    secondary_text=""
-                    image="none"
-                  />  
-                </SwiperSlide>
-
-                <SwiperSlide>
-                  <Banner1 
-                    background="/images/banner3.png" 
-                    main_text=""
-                    secondary_text=""
-                    image="none"
-                  />  
-                </SwiperSlide>
-
-                
-    
+              {
+                banner.map((item:any, index)=> {
+                  return(
+                    index==0?
+                      item.imagens.map((i:any, index:number)=> {
+                        return(
+                          <SwiperSlide key={index}>
+                            <Banner1 
+                              background={i.imagem}                            
+                            /> 
+                          </SwiperSlide>
+                        )
+                      })
+                    :
+                    <></>
+                  )
+                })
+              }
+                  
             </Swiper>
         </Style>
     )

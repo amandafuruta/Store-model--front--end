@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import {useRouter} from 'next/router'
 import parser from 'html-react-parser'
 import Link from 'next/link'
@@ -10,6 +10,8 @@ import BaseLayoutComponent from 'components/layout/base'
 import BannerRodape from "components/banner_rodape"
 import Card from "components/card"
 import Subheader from "components/subheader"
+
+import { api } from '../../services/api'
 
 const produtos = [
     {   
@@ -48,6 +50,16 @@ const relacionados = [
     {id: 4, mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
 ]
 
+interface Produto{
+    id: number,
+    nome:string,
+    valor:number,
+    descricao:string,
+    video_url:string,
+    categoria:string,
+    subcategoria:string,
+    imagens: [],
+}
 
 export default function ProdutoDetail(){
     const router = useRouter();
@@ -55,6 +67,20 @@ export default function ProdutoDetail(){
     const [position, setPosition] = useState(0)
     const [units, setUnits] = useState(1)
     const [card_cart, setCardCart] = useState(false)
+    const [produto, setProduto] = useState<Produto>()
+
+    useState(async ()=> {
+        
+        api.get('/produtos/get-produto/', {
+            params:{id:ID}
+        }).then(response => {
+            console.log("re")
+            console.log(response.data)
+            setProduto(response.data);
+        })
+    })
+
+
 
     function click(id:any){
         setPosition(id)
@@ -64,47 +90,46 @@ export default function ProdutoDetail(){
         setCardCart(true)
         console.log(item)
     }
+ 
 
     return(
         <BaseLayoutComponent>  
             <Subheader/>
-            {
-                produtos.map((item, index) => {
-                    return(
-                        item.id == ID?
-                        <>
-                            <MainSection key={index}>
-                    
+  
+                {produto != null?
+                    <>
+                            <MainSection >
+
                                 <div className="container" >
                                     <div className="path">
                                         <span className="p14-regular">Início</span>
                                         <img src="/images/preview.png" alt="" />
-                                        {item.category?
+                                        {produto.categoria?
                                             <>
-                                                <span className="p14-regular">{item.category}</span>
+                                                <span className="p14-regular">{produto.categoria}</span>
                                                 <img src="/images/preview.png" alt="" />
                                             </>
                                             : <></>
                                         }
 
-                                        {item.subCategory?
+                                        {produto.subcategoria?
                                             <>
-                                                <span className="p14-regular">{item.subCategory}</span>
+                                                <span className="p14-regular">{produto.subcategoria}</span>
                                                 <img src="/images/preview.png" alt="" />
                                             </>
                                             : <></>
                                         }
-                                        <span className="p14-bold">{item.name}</span>
+                                        <span className="p14-bold">{produto.nome}</span>
                                     </div>
 
                                     <div className="details">
                                         <div className="mini_pics">
                                             {
-                                                item.galery != null? 
-                                                    item.galery.map((photos, index)=>{
+                                                produto.imagens != null? 
+                                                    produto.imagens.map((photos:any, index:number)=>{
                                                         return(
                                                             <div className="box_mini" onClick={() => click(index)} id={position==index? 'active' : ''}>
-                                                                <img src={photos} alt="" />
+                                                                <img src={photos.imagem} alt="" />
                                                             </div>
                                                         )
                                                     })
@@ -115,35 +140,35 @@ export default function ProdutoDetail(){
 
                                         <div className="left_side">
                                             {
-                                                item.galery != null?
+                                                produto.imagens != null?
                                                     <div className="main_pic">
-                                                        <img src={item.galery[position]} alt="" />
+                                                        <img src={produto.imagens[position]} alt="" />
                                                     </div>
                                                 :
                                                 <></>   
                                             }
 
                                             <div className="info_details">
-                                                <h2 className="p24-bold">{item.name}</h2>
+                                                <h2 className="p24-bold">{produto.nome}</h2>
 
                                                 <div className="price">
                                                     <span className="p21-bold" style={{color:"#524E4E"}}>R$ </span>
-                                                    <span className="titulo42-bold" style={{color:"var(--primary-color)"}}>{item.value}</span>
+                                                    <span className="titulo42-bold" style={{color:"var(--primary-color)"}}>{produto.valor}</span>
                                                 </div>
 
-                                                {
-                                                    item.installments != null?
-                                                        <span className="p18-regular" style={{marginBottom:"20px"}}>Parcele em {item.installments} sem juros</span>
+                                                {/* {
+                                                    produto.installments != null?
+                                                        <span className="p18-regular" style={{marginBottom:"20px"}}>Parcele em {produto.installments} sem juros</span>
                                                     :
                                                     <></>
-                                                }
+                                                } */}
                                                 <div className="unit">
                                                     <button onClick={() => units>1 ? setUnits(units - 1) : ''}><AiOutlineMinus/></button>
                                                     <span className="titulo41-regular">{units}</span>
                                                     <button onClick={() => setUnits(units + 1)}><AiOutlinePlus/></button>
                                                 </div>
 
-                                                <button onClick={()=> addCart(item.id) } className="add_cart"><img src="/images/cart.png"/><span className="p18-bold">Adicionar</span></button>
+                                                <button onClick={()=> addCart(produto.id) } className="add_cart"><img src="/images/cart.png"/><span className="p18-bold">Adicionar</span></button>
                                             </div>
 
                                         </div>
@@ -162,10 +187,10 @@ export default function ProdutoDetail(){
                                     </div>
 
                                     <div className="produto">
-                                        <div className="img">
-                                            <img src={item.mainPhoto}/>
-                                        </div>
-                                        <span className="p14-regular">{item.name}</span>
+                                        {/* <div className="img">
+                                            <img src={produto.imagens}/>
+                                        </div> */}
+                                        <span className="p14-regular">{produto.nome}</span>
                                     </div>
 
                                     <div className="buttons">
@@ -186,11 +211,13 @@ export default function ProdutoDetail(){
                                     <h3 className="p24-regular about_title" >Sobre</h3>
 
                                     <p className="about_text p16-regular">
-                                        {parser(item.about || "")}
+                                        {parser(produto.descricao || "")}
                                       
                                     </p>
                                     
-                                    <div className="details">
+                                    {/* FALTANDO ESSES DADOS NO OBJETO */}
+                                    
+                                    {/* <div className="details">
                                         {item.estilo ?<span className="p16-bold">Estilo: <span className="p16-regular">{item.estilo}</span> </span>: ''}
                                         {item.amargor ? <span className="p16-bold">Amargor:<span className="p16-regular">{item.amargor}</span> </span> : ''}
                                         {item.abv? <span className="p16-bold">ABV: <span className="p16-regular">{item.abv}</span> </span> : ''}
@@ -198,10 +225,10 @@ export default function ProdutoDetail(){
                                         {item.temp_ideal? <span className="p16-bold">Temperatura ideal: <span className="p16-regular">{item.temp_ideal}</span> </span> : ''}
                                         {item.harmonizacao? <span className="p16-bold">Harmonização: <span className="p16-regular">{item.harmonizacao}</span> </span> :'' }
                                         
-                                    </div>
+                                    </div> */}
 
                                     
-                                    {item.video_url?
+                                    {/* {item.video_url?
                                         <>
                                             <h3 className="p24-regular presentation_title">Video apresentação</h3>
                                             <div className="video_box">
@@ -212,15 +239,14 @@ export default function ProdutoDetail(){
                                         <></>
                                     }
 
-                                    <p className="p16-regular">{item.video_text}</p>
+                                    <p className="p16-regular">{item.video_text}</p> */}
                                 </div>
                             </About>
-                        </>
-                    :
+                    </>
+                    : 
                     <></>
-                    )
-                })
-            }
+                } 
+           
 
             <CervejasRelacionadas>
                 <div className="container">
