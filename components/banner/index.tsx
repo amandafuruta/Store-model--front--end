@@ -10,15 +10,21 @@ import { Pagination, Navigation } from "swiper";
 import Banner1 from './banner1'
 import { api } from '../../services/api'
 
+const banner = [
+  {id:1, image:"/images/banner2.png"},
+  {id:2, image:"/images/banner2.png"},
+  {id:3, image:"/images/banner2.png"},
+]
+
 export default function Banner(){
-  const [banner, setBanner] = useState([])
+  // const [banner, setBanner] = useState([])
 
-  useState(async ()=> {
-      api.get('/banners/get-banners').then(response => {
-          setBanner(response.data);
-      })
+  // useState(async ()=> {
+  //     api.get('/banners/get-banners').then(response => {
+  //         setBanner(response.data);
+  //     })
 
-  })
+  // })
 
     return(
         <Style>
@@ -36,18 +42,12 @@ export default function Banner(){
               {
                 banner.map((item:any, index)=> {
                   return(
-                    index==0?
-                      item.imagens.map((i:any, index:number)=> {
-                        return(
-                          <SwiperSlide key={index}>
-                            <Banner1 
-                              background={i.imagem}                            
-                            /> 
-                          </SwiperSlide>
-                        )
-                      })
-                    :
-                    <></>
+                    <SwiperSlide key={index}>
+                      <Banner1 
+                        background={item.image}                            
+                      /> 
+                    </SwiperSlide>
+                        
                   )
                 })
               }

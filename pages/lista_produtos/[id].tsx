@@ -21,18 +21,15 @@ const produtos = [
     {id: 8, mainPhoto: "/images/product4.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
 ]
 
+const categorias =[
+    {id:1, title:"TIPO", quantity: 3, }
+]
+
 export default function Lista_produtos(){
     const { query } = useRouter()
     const [filter_content, setFilterContent] = useState("Relevantes")
     const [filter_open, setFilterOpen] = useState(false)
     const [orange_filter_open, setOrangeFilterOpen] = useState(false)
-    const [categorias, setCategorias] = useState([])
-
-    useState(async() => {
-        api.get("/produtos/get-tags-produtos").then(response => {
-            setCategorias(response.data)
-        })
-    })
     
     return(
         <BaseLayoutComponent>
@@ -76,7 +73,7 @@ export default function Lista_produtos(){
 
                     <div className="body">
                         <div className="left">
-                            {
+                            {/* {
                                 categorias.map((item:any, index:number) =>{
                                     return(
                                         <div className="options_box">
@@ -92,9 +89,9 @@ export default function Lista_produtos(){
                                         </div>
                                     )
                                 })
-                            }
+                            } */}
 
-                            {/* <div className="options_box">
+                            <div className="options_box">
                                 <p className="p14-bold title">Estilos de cerveja</p>
                                 
                                 <CheckBox title="India Pale Ale - IPA " quantity={12} name="India Pale Ale" value="India Pale Ale" margin={16} font_size="14px" font_weight={400}  span_font_weight={400}/>
@@ -138,7 +135,7 @@ export default function Lista_produtos(){
                                     <label className="p14-regular">Acima de R$ 40,00</label>
                                 </div>
                             
-                            </div> */}
+                            </div>
                         </div>
 
                         <div className="right">

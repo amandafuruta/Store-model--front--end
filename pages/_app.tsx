@@ -5,12 +5,10 @@ import type { AppProps } from 'next/app'
 import Head from "next/head";
 import "swiper/css/bundle";
 
-import { AuthProvider } from '../contexts/AuthContext'
-
 export default function CustomApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 
     return (
-        <AuthProvider>
+        <>
             <Head>
                 <title>Von Borstel</title>
                 <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
@@ -72,7 +70,7 @@ export default function CustomApp({ Component, pageProps: { session, ...pageProp
             <Component {...pageProps} />
            
 
-        </AuthProvider>   
+        </>   
     
     )
 }

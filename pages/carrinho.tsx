@@ -59,7 +59,6 @@ export default function Cart(){
       }
 
       function deletar (id:number){
-        console.log(id)
         
         var index = 0
         {

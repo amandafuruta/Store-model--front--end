@@ -12,6 +12,28 @@ import styled from 'styled-components'
 
 import { api } from '../../services/api'
 
+const produtos = [
+    {   
+        id: "1", 
+        mainPhoto: "/images/product1.png", 
+        name:"West Coast IPA com Strata Pack com 12", 
+        value:"85,00"
+    },
+
+    {id: "2", mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
+    {id: "3", mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
+    {id: "4", mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
+    {id: "5", mainPhoto: "/images/product3.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
+    {id: "6", mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
+    {id: "7", mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
+    {id: "8", mainPhoto: "/images/product4.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
+]
+
+const banner = [
+    {id:1, imagem:"/images/ad2.png"},
+    {id:2, imagem:"/images/ad2.png"},
+    {id:3, imagem:"/images/ad2.png"},
+]
 
 const presentes = [
     {id: 1, mainPhoto: "/images/product2.png", name:"West Coast IPA com Strata Pack com 12", value:"75,00" },
@@ -22,17 +44,17 @@ const presentes = [
 
 
 export default function AreaLogada(){
-    const [banner, setBanner] = useState([])
-    const [produto, setProduto] = useState([])
+    // const [banner, setBanner] = useState([])
+    // const [produto, setProduto] = useState([])
 
-    useState(async ()=> {
-        api.get('/banners/get-banners').then(response => {
-            setBanner(response.data);
-        })
-        api.get('/produtos/get-produtos-home').then(response => {
-            setProduto(response.data);
-        })
-    })
+    // useState(async ()=> {
+    //     api.get('/banners/get-banners').then(response => {
+    //         setBanner(response.data);
+    //     })
+    //     api.get('/produtos/get-produtos-home').then(response => {
+    //         setProduto(response.data);
+    //     })
+    // })
 
 
     return(
@@ -50,12 +72,10 @@ export default function AreaLogada(){
 
                     <div className="products">
                         {
-                            produto.map((item: any) => {
-                                return(
-                                    item.produtos.map((i:any, index: number)=> {
-                                        return <Card key={index} id={i.id} photo={i.imagem} description={i.nome} price={i.valor} margin={16} />
-                                    })
-                                )
+                            produtos.map((item: any, index:number) => {
+                               
+                                return <Card key={index} id={item.id} photo={item.mainPhoto} description={item.name} price={item.value} margin={16} />
+                                
                             })
                         }
 
@@ -63,17 +83,10 @@ export default function AreaLogada(){
 
                     <div className="banner_anuncio ad_triple">
                         {
-                            banner.map((item:any) => {
-                                return(
-                                    item.nome=="Banner Meio"?
-                                        item.imagens.map((i:any, index:number)=> {
-                                            return(
-                                                
-                                                <div key={index} className={index == 0 ?"ad_box first_ad" : index == 1? "ad_box" : 'ad_box last_ad'}><img src={i.imagem}/></div>
-                                            )
-                                        })
-                                    :
-                                        <></>
+                            banner.map((item:any, index:number) => {
+                                return(            
+                                    <div key={index} className={index == 0 ?"ad_box first_ad" : index == 1? "ad_box" : 'ad_box last_ad'}><img src={item.imagem}/></div>
+                                             
                                 )
                             })
                         }
